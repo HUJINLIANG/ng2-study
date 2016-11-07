@@ -38,4 +38,3 @@ var HeroService = (function () {
 }());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = HeroService;
-//# sourceMappingURL=hero.service.js.map

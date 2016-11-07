@@ -29,7 +29,7 @@ var DashboardComponent = (function () {
             moduleId: module.id,
             selector: 'my-dashboard',
             templateUrl: 'dashboard.component.html',
-            styleUrl: ['dashboard.component.css']
+            styleUrls: ['dashboard.component.css']
         }), 
         __metadata('design:paramtypes', [hero_service_1.default])
     ], DashboardComponent);
@@ -37,4 +37,3 @@ var DashboardComponent = (function () {
 }());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = DashboardComponent;
-//# sourceMappingURL=dashboard.component.js.map

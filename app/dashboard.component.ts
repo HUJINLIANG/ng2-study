@@ -10,7 +10,7 @@ import {Hero} from './hero';
     moduleId:module.id,
     selector:'my-dashboard',
     templateUrl:'dashboard.component.html',
-    styleUrl:['dashboard.component.css']
+    styleUrls:['dashboard.component.css']
 })
 export default class DashboardComponent{
     heroes:Hero[] = [];
