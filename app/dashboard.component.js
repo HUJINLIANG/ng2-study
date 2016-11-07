@@ -12,20 +12,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by jialao on 2016/11/7.
  */
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Tour of Heroes';
+var hero_service_1 = require('./hero.service');
+var DashboardComponent = (function () {
+    function DashboardComponent(heroService) {
+        this.heroService = heroService;
+        this.heroes = [];
     }
-    AppComponent = __decorate([
+    DashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        console.log('dashboard init');
+        this.heroService.getHeroes()
+            .then(function (heroes) { return _this.heroes = heroes.slice(1, 5); });
+    };
+    DashboardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'my-app',
-            styleUrls: ['app.component.css'],
-            template: "\n    <h1>{{title}}</h1>\n    <nav>\n    <a routerLink=\"/dashboard\" routerLinkActive=\"active\">dashboard</a>\n    <a routerLink=\"/heroes\" routerLinkActive=\"active\">Heroes</a>\n</nav>\n    <router-outlet></router-outlet>\n  "
+            selector: 'my-dashboard',
+            templateUrl: 'dashboard.component.html',
+            styleUrl: ['dashboard.component.css']
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [hero_service_1.default])
+    ], DashboardComponent);
+    return DashboardComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map
