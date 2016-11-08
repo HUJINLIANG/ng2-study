@@ -5,6 +5,10 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms'
+import {HttpModule} from '@angular/http';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }   from './app.component';
 import HeroService from './hero.service';
@@ -18,7 +22,10 @@ import {AppRoutingModule} from './app-routing.module';
     imports: [
         BrowserModule,
         FormsModule,
-        AppRoutingModule],
+        AppRoutingModule,
+        HttpModule,
+        InMemoryWebApiModule.forRoot(InMemoryDataService),
+    ],
     declarations: [ AppComponent,HeroDetailComponent,HeroesComponent,DashboardComponent ],
     providers:[HeroService],
     bootstrap:    [ AppComponent ]
