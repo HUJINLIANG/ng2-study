@@ -11,6 +11,10 @@ import {HEROES} from './mock-heroes'
 @Injectable()
 export default class HeroService{
     private heroesUrl:string = 'app/heroes';
+    private headers = new Headers({
+        'Content-Type':'application/json'
+    })
+
     private handleError(error:any):Promise<any>{
         console.err('error occured',error);
         return Promise.reject(error.message || error);
@@ -24,6 +28,31 @@ export default class HeroService{
             .then(response => {console.log(response);return response.json().data as Hero[];})
             .catch(this.handleError);
     }
+    update(hero:Hero):Promise<Hero> {
+        const url = `${this.heroesUrl}/${hero.id}`;
+        return this.http
+            .put(url,JSON.stringify(hero),{headers:this.headers})
+            .toPromise()
+            .then(() => hero)
+            .catch(this.handleError)
+    }
+    create(name:string):Promise<any>{
+        return this.http
+            .post(this.heroesUrl,JSON.stringify({name:name}),{headers:this.headers})
+            .toPromise()
+            .then(res => res.json().data)
+            .catch(this.handleError);
+    }
+    delete(id:number):Promise<void>{
+        const url = `${this.heroesUrl}/${id}`;
+        return this.http.delete(url,{Headers:this.headers})
+            .toPromise()
+            .then(()=>null)
+            .catch(this.handleError);
+    }
+
+    
+
     getHeroesSlowly(): Promise<Hero[]> {
         return new Promise<Hero[]>(resolve =>
             setTimeout(resolve, 2000)) // delay 2 seconds
