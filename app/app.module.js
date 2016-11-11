@@ -15,6 +15,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+require('./rxjs-extension');
 var angular_in_memory_web_api_1 = require('angular-in-memory-web-api');
 var in_memory_data_service_1 = require('./in-memory-data.service');
 var app_component_1 = require('./app.component');
@@ -22,6 +23,7 @@ var hero_service_1 = require('./hero.service');
 var heroes_component_1 = require('./heroes.component');
 var hero_detail_component_1 = require('./hero-detail.component');
 var dashboard_component_1 = require('./dashboard.component');
+var hero_search_component_1 = require('./hero-search.component');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
@@ -35,7 +37,7 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
             ],
-            declarations: [app_component_1.AppComponent, hero_detail_component_1.default, heroes_component_1.HeroesComponent, dashboard_component_1.default],
+            declarations: [app_component_1.AppComponent, hero_detail_component_1.default, heroes_component_1.HeroesComponent, dashboard_component_1.default, hero_search_component_1.HeroSearchComponent],
             providers: [hero_service_1.default],
             bootstrap: [app_component_1.AppComponent]
         }), 

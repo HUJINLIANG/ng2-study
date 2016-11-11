@@ -16,7 +16,7 @@ export default class HeroService{
     })
 
     private handleError(error:any):Promise<any>{
-        console.err('error occured',error);
+        console.log('error occured');
         return Promise.reject(error.message || error);
     }
 
@@ -45,7 +45,7 @@ export default class HeroService{
     }
     delete(id:number):Promise<void>{
         const url = `${this.heroesUrl}/${id}`;
-        return this.http.delete(url,{Headers:this.headers})
+        return this.http.delete(url,{headers:this.headers})
             .toPromise()
             .then(()=>null)
             .catch(this.handleError);
